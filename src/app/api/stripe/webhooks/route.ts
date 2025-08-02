@@ -148,8 +148,8 @@ async function handleInvoicePaymentSucceeded(invoice: Stripe.Invoice) {
   // TODO: Handle successful payment
   // Update subscription status, send receipt, extend access, etc.
   
-  if (invoice.subscription) {
-    console.log(`Payment succeeded for subscription: ${invoice.subscription}`);
+  if ((invoice as any).subscription) {
+    console.log(`Payment succeeded for subscription: ${(invoice as any).subscription}`);
     
     // Example: Send receipt email, update payment history
     /*

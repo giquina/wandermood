@@ -52,12 +52,12 @@ export async function GET(request: NextRequest) {
       billingCycle: subscription.metadata.billing_cycle,
       customerId: subscription.customer,
       latestInvoice: subscription.latest_invoice ? {
-        id: subscription.latest_invoice.id,
-        status: subscription.latest_invoice.status,
-        amountPaid: subscription.latest_invoice.amount_paid,
-        amountDue: subscription.latest_invoice.amount_due,
-        currency: subscription.latest_invoice.currency,
-        created: new Date(subscription.latest_invoice.created * 1000),
+        id: (subscription.latest_invoice as any).id,
+        status: (subscription.latest_invoice as any).status,
+        amountPaid: (subscription.latest_invoice as any).amount_paid,
+        amountDue: (subscription.latest_invoice as any).amount_due,
+        currency: (subscription.latest_invoice as any).currency,
+        created: new Date((subscription.latest_invoice as any).created * 1000),
       } : null,
     };
 

@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --background: 220 15% 97%;
+  --foreground: 220 10% 15%;
+  --card: 220 20% 100%;
+  --card-foreground: 220 10% 15%;
+  --popover: 220 20% 100%;
+  --popover-foreground: 220 10% 15%;
+  --primary: 200 100% 50%;
+  --primary-foreground: 220 20% 100%;
+  --secondary: 220 15% 95%;
+  --secondary-foreground: 220 10% 30%;
+  --muted: 220 15% 95%;
+  --muted-foreground: 220 10% 50%;
+  --accent: 200 100% 50%;
+  --accent-foreground: 220 20% 100%;
+  --destructive: 0 65% 50%;
+  --destructive-foreground: 220 20% 100%;
+  --border: 220 15% 85%;
+  --input: 220 15% 85%;
+  --ring: 200 100% 50%;
+  --radius: 12px;
+}
+
+.dark {
+  --background: 220 15% 7%;
+  --foreground: 220 15% 95%;
+  --card: 220 15% 10%;
+  --card-foreground: 220 15% 95%;
+  --popover: 220 15% 10%;
+  --popover-foreground: 220 15% 95%;
+  --primary: 200 100% 60%;
+  --primary-foreground: 220 15% 7%;
+  --secondary: 220 15% 15%;
+  --secondary-foreground: 220 15% 70%;
+  --muted: 220 15% 15%;
+  --muted-foreground: 220 15% 60%;
+  --accent: 200 100% 60%;
+  --accent-foreground: 220 15% 7%;
+  --destructive: 0 65% 60%;
+  --destructive-foreground: 220 15% 95%;
+  --border: 220 15% 20%;
+  --input: 220 15% 20%;
+  --ring: 200 100% 60%;
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+body {
+  color: hsl(var(--foreground));
+  background: hsl(var(--background));
+  font-feature-settings: "rlig" 1, "calt" 1;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.gradient-bg {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.mood-card {
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.mood-card:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
+}

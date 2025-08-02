@@ -9,7 +9,7 @@ const moods: Mood[] = [
     id: 'calm',
     name: 'Calm & Peaceful',
     emoji: '🧘‍♀️',
-    description: 'Need to recharge and find tranquility',
+    description: 'I want to feel relaxed and recharged',
     color: 'mood-calm-accent',
     gradient: 'mood-card-calm'
   },
@@ -17,7 +17,7 @@ const moods: Mood[] = [
     id: 'adventurous',
     name: 'Adventurous',
     emoji: '🏔️',
-    description: 'Ready for thrills and exploration',
+    description: 'I want to feel thrilled and challenged',
     color: 'mood-adventure-accent',
     gradient: 'mood-card-adventure'
   },
@@ -25,7 +25,7 @@ const moods: Mood[] = [
     id: 'romantic',
     name: 'Romantic',
     emoji: '💕',
-    description: 'Seeking intimate and beautiful moments',
+    description: 'I want to feel loved and connected',
     color: 'mood-romantic-accent',
     gradient: 'mood-card-romantic'
   },
@@ -33,7 +33,7 @@ const moods: Mood[] = [
     id: 'creative',
     name: 'Creative & Inspired',
     emoji: '🎨',
-    description: 'Want to spark imagination and artistry',
+    description: 'I want to feel inspired and artistic',
     color: 'mood-creative-accent',
     gradient: 'mood-card-creative'
   },
@@ -41,7 +41,7 @@ const moods: Mood[] = [
     id: 'social',
     name: 'Social & Fun',
     emoji: '🎉',
-    description: 'Looking to connect and celebrate',
+    description: 'I want to feel energized and social',
     color: 'mood-social-accent',
     gradient: 'mood-card-social'
   },
@@ -49,7 +49,7 @@ const moods: Mood[] = [
     id: 'celebrate',
     name: 'Celebratory',
     emoji: '🥳',
-    description: 'Ready to party and make memories',
+    description: 'I want to feel joyful and festive',
     color: 'mood-celebrate-accent',
     gradient: 'mood-card-celebrate'
   },
@@ -57,7 +57,7 @@ const moods: Mood[] = [
     id: 'reflective',
     name: 'Reflective & Learning',
     emoji: '📚',
-    description: 'Seeking knowledge and meaningful experiences',
+    description: 'I want to feel enriched and thoughtful',
     color: 'mood-reflective-accent',
     gradient: 'mood-card-reflective'
   },
@@ -65,7 +65,7 @@ const moods: Mood[] = [
     id: 'luxury',
     name: 'Luxurious & Pampered',
     emoji: '💎',
-    description: 'Craving elegance and premium experiences',
+    description: 'I want to feel spoiled and elegant',
     color: 'mood-luxury-accent',
     gradient: 'mood-card-luxury'
   }
@@ -207,7 +207,7 @@ export default function MoodPicker({ onMoodSelect, onFindTrips, selectedMood }: 
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.4 }}
               >
-                How intense is this feeling right now?
+                How strongly do you want to experience this feeling?
               </motion.p>
             </div>
             
@@ -254,9 +254,9 @@ export default function MoodPicker({ onMoodSelect, onFindTrips, selectedMood }: 
                 animate={{ opacity: [0.7, 1, 0.7] }}
                 transition={{ duration: 2, repeat: Infinity }}
               >
-                {moodIntensity <= 3 && "A gentle, subtle feeling"}
-                {moodIntensity > 3 && moodIntensity <= 7 && "A moderate, noticeable mood"}
-                {moodIntensity > 7 && "An intense, powerful emotion"}
+                {moodIntensity <= 3 && "A gentle, subtle experience"}
+                {moodIntensity > 3 && moodIntensity <= 7 && "A moderate, balanced experience"}
+                {moodIntensity > 7 && "An intense, immersive experience"}
               </motion.p>
             </div>
           </motion.div>
@@ -289,7 +289,7 @@ export default function MoodPicker({ onMoodSelect, onFindTrips, selectedMood }: 
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4 }}
           >
-            We'll curate experiences that match your {selectedMood.name.toLowerCase()} mood at intensity {moodIntensity}/10
+            We'll curate experiences that help you feel {selectedMood.name.toLowerCase()} at intensity {moodIntensity}/10
           </motion.p>
         </motion.div>
       )}

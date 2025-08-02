@@ -2,6 +2,8 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import Header from '@/components/Header'
+import Footer from '@/components/Footer'
 import MoodPicker from '@/components/MoodPicker'
 import TripRecommendations from '@/components/TripRecommendations'
 import { Mood } from '@/types'
@@ -26,6 +28,7 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-white">
+      <Header />
       <AnimatePresence mode="wait">
         {!showRecommendations ? (
           <motion.div
@@ -36,7 +39,7 @@ export default function HomePage() {
             className="min-h-screen"
           >
             {/* 2025 Modern Hero Section */}
-            <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+            <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
               {/* Subtle background gradient */}
               <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-white" />
               
@@ -65,7 +68,7 @@ export default function HomePage() {
                       not just your preferences
                     </p>
                     <p className="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">
-                      AI-powered travel discovery that understands how you feel and finds destinations that resonate with your soul.
+                      Intelligent travel discovery that understands how you feel and finds destinations that resonate with your soul.
                     </p>
                   </motion.div>
 
@@ -87,24 +90,43 @@ export default function HomePage() {
                     </button>
                   </motion.div>
 
-                  {/* Modern feature badges */}
+                  {/* Trust signals and features */}
                   <motion.div
                     initial={{ opacity: 0, y: 24 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.4, ease: [0.21, 1, 0.81, 1] }}
-                    className="flex flex-wrap justify-center gap-4 text-sm text-gray-500"
+                    className="space-y-6"
                   >
-                    <div className="flex items-center px-4 py-2 bg-gray-50 rounded-full">
-                      <div className="w-2 h-2 bg-green-500 rounded-full mr-2" />
-                      AI-Powered
+                    {/* User count */}
+                    <div className="text-center">
+                      <p className="text-sm text-gray-500 mb-4">
+                        Trusted by <span className="font-semibold text-gray-900">50,000+</span> emotional travelers
+                      </p>
+                      {/* User avatars */}
+                      <div className="flex justify-center -space-x-2 mb-6">
+                        {[1,2,3,4,5].map(i => (
+                          <div key={i} className="w-10 h-10 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full border-2 border-white" />
+                        ))}
+                        <div className="w-10 h-10 bg-gray-200 rounded-full border-2 border-white flex items-center justify-center text-xs font-medium text-gray-600">
+                          +45k
+                        </div>
+                      </div>
                     </div>
-                    <div className="flex items-center px-4 py-2 bg-gray-50 rounded-full">
-                      <div className="w-2 h-2 bg-blue-500 rounded-full mr-2" />
-                      Global Destinations
-                    </div>
-                    <div className="flex items-center px-4 py-2 bg-gray-50 rounded-full">
-                      <div className="w-2 h-2 bg-purple-500 rounded-full mr-2" />
-                      Emotion-Aware
+                    
+                    {/* Feature badges */}
+                    <div className="flex flex-wrap justify-center gap-4 text-sm text-gray-500">
+                      <div className="flex items-center px-4 py-2 bg-gray-50 rounded-full">
+                        <div className="w-2 h-2 bg-green-500 rounded-full mr-2" />
+                        Smart Matching
+                      </div>
+                      <div className="flex items-center px-4 py-2 bg-gray-50 rounded-full">
+                        <div className="w-2 h-2 bg-blue-500 rounded-full mr-2" />
+                        Global Destinations
+                      </div>
+                      <div className="flex items-center px-4 py-2 bg-gray-50 rounded-full">
+                        <div className="w-2 h-2 bg-purple-500 rounded-full mr-2" />
+                        Emotion-Aware
+                      </div>
                     </div>
                   </motion.div>
                 </div>
@@ -121,10 +143,10 @@ export default function HomePage() {
                   className="text-center mb-16"
                 >
                   <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
-                    How are you feeling?
+                    How do you want to feel?
                   </h2>
                   <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                    Select your current emotional state and we'll curate travel experiences that perfectly match your mood.
+                    Choose the emotional experience you're seeking, and we'll curate travel destinations that help you achieve that feeling.
                   </p>
                 </motion.div>
                 
@@ -144,7 +166,7 @@ export default function HomePage() {
                     Emotional Intelligence Meets Travel
                   </h2>
                   <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                    Experience the future of travel planning with AI that understands your emotions and finds destinations that speak to your heart.
+                    Experience the future of travel planning with technology that understands your emotions and finds destinations that speak to your heart.
                   </p>
                 </div>
                 
@@ -163,7 +185,7 @@ export default function HomePage() {
                       Emotional Intelligence
                     </h3>
                     <p className="text-gray-600 leading-relaxed">
-                      Our AI understands your feelings and matches them to destinations that resonate with your emotional state.
+                      Our platform understands your feelings and matches them to destinations that resonate with your emotional state.
                     </p>
                   </motion.div>
 
@@ -206,32 +228,7 @@ export default function HomePage() {
               </div>
             </section>
 
-            {/* Modern Footer */}
-            <footer className="py-16 bg-gray-50">
-              <div className="max-w-7xl mx-auto px-6 lg:px-8">
-                <div className="text-center">
-                  <h3 className="text-2xl font-semibold text-gray-900 mb-4">
-                    Ready to begin your emotional journey?
-                  </h3>
-                  <p className="text-gray-600 mb-8 max-w-md mx-auto">
-                    Start discovering travel experiences that match your soul.
-                  </p>
-                  
-                  <button
-                    className="inline-flex items-center px-6 py-3 bg-black text-white font-medium rounded-full hover:bg-gray-800 transition-colors duration-200"
-                    onClick={() => document.querySelector('#mood-selection')?.scrollIntoView({ behavior: 'smooth' })}
-                  >
-                    Get Started
-                  </button>
-                  
-                  <div className="mt-12 pt-8 border-t border-gray-200 text-center">
-                    <p className="text-gray-500 text-sm">
-                      © 2025 WanderMood. Built with modern design principles.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </footer>
+            <Footer />
           </motion.div>
         ) : (
           <motion.div

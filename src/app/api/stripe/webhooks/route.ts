@@ -148,8 +148,10 @@ async function handleInvoicePaymentSucceeded(invoice: Stripe.Invoice) {
   // TODO: Handle successful payment
   // Update subscription status, send receipt, extend access, etc.
   
-  if ((invoice as any).subscription) {
-    console.log(`Payment succeeded for subscription: ${(invoice as any).subscription}`);
+  const subscription = (invoice as any).subscription;
+  if (subscription) {
+    const subscriptionId = typeof subscription === 'string' ? subscription : subscription.id;
+    console.log(`Payment succeeded for subscription: ${subscriptionId}`);
     
     // Example: Send receipt email, update payment history
     /*
@@ -157,7 +159,7 @@ async function handleInvoicePaymentSucceeded(invoice: Stripe.Invoice) {
     await database.payments.create({
       data: {
         stripeInvoiceId: invoice.id,
-        stripeSubscriptionId: invoice.subscription as string,
+        stripeSubscriptionId: subscriptionId,
         amount: invoice.amount_paid,
         currency: invoice.currency,
         status: 'succeeded',
@@ -174,14 +176,16 @@ async function handleInvoicePaymentFailed(invoice: Stripe.Invoice) {
   // TODO: Handle failed payment
   // Send dunning emails, update subscription status, etc.
   
-  if (invoice.subscription) {
-    console.log(`Payment failed for subscription: ${invoice.subscription}`);
+  const subscription = (invoice as any).subscription;
+  if (subscription) {
+    const subscriptionId = typeof subscription === 'string' ? subscription : subscription.id;
+    console.log(`Payment failed for subscription: ${subscriptionId}`);
     
     // Example: Send payment failure notification
     /*
     await sendPaymentFailureEmail(invoice);
     await database.userSubscriptions.update({
-      where: { stripeSubscriptionId: invoice.subscription as string },
+      where: { stripeSubscriptionId: subscriptionId },
       data: { status: 'past_due' },
     });
     */

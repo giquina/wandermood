@@ -210,7 +210,7 @@ export interface WeatherMoodCorrelation {
   activityRecommendations: string[];
 }
 
-export interface UKTravelExperience extends TravelExperience {
+export interface UKTravelExperience extends Omit<TravelExperience, 'destination'> {
   destination: UKDestination;
   transport: TransportOption[];
   accommodation: UKAccommodation[];

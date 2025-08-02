@@ -108,7 +108,7 @@ export function handleStripeError(error: any): WanderMoodPaymentError {
 /**
  * Handle card-specific errors
  */
-function handleCardError(error: Stripe.StripeCardError): WanderMoodPaymentError {
+function handleCardError(error: any): WanderMoodPaymentError {
   const { code, decline_code, message } = error;
 
   switch (code) {
@@ -231,7 +231,7 @@ function handleCardDeclined(
 /**
  * Handle invalid request errors
  */
-function handleInvalidRequestError(error: Stripe.StripeInvalidRequestError): WanderMoodPaymentError {
+function handleInvalidRequestError(error: any): WanderMoodPaymentError {
   const { message, param } = error;
 
   if (param) {

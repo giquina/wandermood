@@ -81,13 +81,13 @@ export const seasonalMultipliers = {
 
 // Mood-specific activity cost adjustments
 export const moodCostAdjustments = {
-  calm: { activities: 0.8, accommodation: 1.1 }, // Spa treatments cost more
-  adventurous: { activities: 1.2, accommodation: 0.9 }, // Adventure activities cost more
-  romantic: { accommodation: 1.3, meals: 1.2 }, // Romantic venues premium
-  creative: { activities: 1.1, accommodation: 1.0 },
-  social: { meals: 1.1, activities: 1.1 },
+  calm: { activities: 0.8, accommodation: 1.1, meals: 1.0 }, // Spa treatments cost more
+  adventurous: { activities: 1.2, accommodation: 0.9, meals: 1.0 }, // Adventure activities cost more
+  romantic: { accommodation: 1.3, meals: 1.2, activities: 1.0 }, // Romantic venues premium
+  creative: { activities: 1.1, accommodation: 1.0, meals: 1.0 },
+  social: { meals: 1.1, activities: 1.1, accommodation: 1.0 },
   celebratory: { meals: 1.3, activities: 1.2, accommodation: 1.1 },
-  reflective: { activities: 0.7, accommodation: 1.0 },
+  reflective: { activities: 0.7, accommodation: 1.0, meals: 1.0 },
   luxury: { accommodation: 1.5, meals: 1.4, activities: 1.3 }
 }
 
@@ -118,7 +118,7 @@ export const calculateTripCost = (
     duration,
     groupSize,
     seasonMultiplier.accommodation,
-    moodAdjustment.accommodation || 1.0
+(moodAdjustment.accommodation ?? 1.0)
   )
 
   // Activity costs
@@ -127,7 +127,7 @@ export const calculateTripCost = (
     duration,
     groupSize,
     seasonMultiplier.activities,
-    moodAdjustment.activities || 1.0
+(moodAdjustment.activities ?? 1.0)
   )
 
   // Meal costs
@@ -136,7 +136,7 @@ export const calculateTripCost = (
     duration,
     groupSize,
     seasonMultiplier.meals,
-    moodAdjustment.meals || 1.0
+(moodAdjustment.meals ?? 1.0)
   )
 
   // Total costs

@@ -1,0 +1,69 @@
+{
+  "name": "WanderMood MCP Configuration",
+  "version": "1.0.0",
+  "description": "Model Context Protocol configuration for WanderMood project",
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": ["@modelcontextprotocol/server-filesystem", "/workspaces/wandermood"],
+      "description": "File system operations for WanderMood project",
+      "capabilities": ["read", "write", "list", "search"]
+    },
+    "everything": {
+      "command": "npx",
+      "args": ["@modelcontextprotocol/server-everything"],
+      "description": "Web search and content retrieval",
+      "capabilities": ["search", "fetch", "summarize"]
+    }
+  },
+  "integrations": {
+    "github": {
+      "cli": "gh",
+      "capabilities": [
+        "repo management",
+        "issue tracking", 
+        "pull requests",
+        "actions",
+        "releases"
+      ],
+      "config": {
+        "defaultRepo": "giquina/wandermood",
+        "defaultBranch": "main"
+      }
+    },
+    "vercel": {
+      "cli": "npx vercel",
+      "capabilities": [
+        "deployment",
+        "domain management",
+        "environment variables",
+        "analytics",
+        "logs"
+      ],
+      "config": {
+        "defaultProject": "wandermood",
+        "framework": "nextjs"
+      }
+    }
+  },
+  "workflows": {
+    "deploy": {
+      "description": "Deploy WanderMood to Vercel",
+      "steps": [
+        "Build Next.js application",
+        "Run type checking",
+        "Deploy to Vercel",
+        "Update deployment status"
+      ]
+    },
+    "release": {
+      "description": "Create GitHub release",
+      "steps": [
+        "Tag version",
+        "Generate changelog", 
+        "Create GitHub release",
+        "Deploy to production"
+      ]
+    }
+  }
+}

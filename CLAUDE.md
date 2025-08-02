@@ -18,6 +18,13 @@ npm run lint         # ESLint code quality checks
 npm run typecheck    # TypeScript compilation check without emit
 ```
 
+### Deployment Scripts
+```bash
+# Production deployment options
+./scripts/deploy-github-vercel.sh  # Full deployment: GitHub + Vercel (recommended)
+./scripts/deploy.sh                # Vercel-only deployment
+```
+
 ### Automation Scripts
 ```bash
 # Claude workflow automation

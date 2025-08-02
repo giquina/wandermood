@@ -1,24 +1,39 @@
 #!/bin/bash
 
-# WanderMood Deployment Script
-# Automatically deploys to Vercel using the configured token
+# WanderMood Vercel-Only Deployment Script
+# Deploys to Vercel without GitHub push
 
 set -e
 
 VERCEL_TOKEN="8WaapxGq5zAwvdEqM8Pf1xjw"
 
-echo "🚀 Starting WanderMood deployment..."
+echo "🚀 Starting WanderMood Vercel deployment..."
 
 # Run type checking
 echo "🔍 Running TypeScript checks..."
-npm run typecheck
+if npm run typecheck; then
+    echo "✅ TypeScript check passed"
+else
+    echo "❌ TypeScript check failed"
+    exit 1
+fi
 
 # Run linting
 echo "🧹 Running linting..."
-npm run lint
+if npm run lint; then
+    echo "✅ Linting passed"
+else
+    echo "❌ Linting failed"
+    exit 1
+fi
 
 # Deploy to Vercel
 echo "📦 Deploying to Vercel..."
-vercel --token $VERCEL_TOKEN deploy --prod --yes
-
-echo "✅ Deployment complete!"
+if vercel --token $VERCEL_TOKEN deploy --prod --yes; then
+    echo ""
+    echo "✅ Vercel deployment complete!"
+    echo "🔗 https://wandermood.vercel.app"
+else
+    echo "❌ Vercel deployment failed"
+    exit 1
+fi

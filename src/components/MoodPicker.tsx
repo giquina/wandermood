@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence, PanInfo } from 'framer-motion'
 import { Mood } from '@/types'
 
 const moods: Mood[] = [
@@ -77,12 +77,20 @@ interface MoodPickerProps {
   selectedMood?: Mood | null;
 }
 
+// Haptic feedback for mobile devices
+const hapticFeedback = () => {
+  if (typeof window !== 'undefined' && 'navigator' in window && 'vibrate' in navigator) {
+    navigator.vibrate(50) // Light haptic feedback
+  }
+}
+
 export default function MoodPicker({ onMoodSelect, onFindTrips, selectedMood }: MoodPickerProps) {
   const [hoveredMood, setHoveredMood] = useState<string | null>(null)
   const [moodIntensity, setMoodIntensity] = useState(5)
   const [showIntensitySlider, setShowIntensitySlider] = useState(false)
 
   const handleMoodSelection = (mood: Mood) => {
+    hapticFeedback() // Add haptic feedback on selection
     onMoodSelect(mood, moodIntensity)
     setShowIntensitySlider(true)
   }
@@ -97,6 +105,10 @@ export default function MoodPicker({ onMoodSelect, onFindTrips, selectedMood }: 
     <div className="w-full max-w-6xl mx-auto mood-picker">
       {/* Modern Mood Grid */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-6 mb-12">
+        {/* Mobile: Add swipe hint */}
+        <div className="col-span-2 md:col-span-4 text-center mb-4 md:hidden">
+          <p className="text-sm text-gray-500">Tap cards to select your desired mood</p>
+        </div>
         {moods.map((mood, index) => (
           <motion.div
             key={mood.id}

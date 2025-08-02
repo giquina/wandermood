@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Mood } from '@/types'
+import Breadcrumbs from './Breadcrumbs'
 
 interface TripExperience {
   id: string
@@ -33,7 +34,7 @@ const sampleExperiences: TripExperience[] = [
     location: 'Kyoto, Japan',
     description: 'Find inner peace at ancient temples with guided meditation sessions and traditional tea ceremonies.',
     imageUrl: 'https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=800&q=80',
-    estimatedCost: '$2,400',
+    estimatedCost: '£2,400',
     duration: '5 days',
     moodTags: ['calm', 'reflective'],
     rating: 4.8,
@@ -46,7 +47,7 @@ const sampleExperiences: TripExperience[] = [
     location: 'Maldives',
     description: 'Ultimate relaxation in crystal-clear waters with spa treatments and sunset yoga.',
     imageUrl: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80',
-    estimatedCost: '$4,200',
+    estimatedCost: '£4,200',
     duration: '7 days',
     moodTags: ['calm', 'luxury'],
     rating: 4.9,
@@ -61,7 +62,7 @@ const sampleExperiences: TripExperience[] = [
     location: 'Interlaken, Switzerland',
     description: 'Heart-pumping activities including paragliding, mountain biking, and glacier hiking.',
     imageUrl: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80',
-    estimatedCost: '$3,200',
+    estimatedCost: '£3,200',
     duration: '7 days',
     moodTags: ['adventurous'],
     rating: 4.9,
@@ -74,7 +75,7 @@ const sampleExperiences: TripExperience[] = [
     location: 'Reykjavik, Iceland',
     description: 'Chase the aurora borealis while exploring ice caves and geothermal hot springs.',
     imageUrl: 'https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=800&q=80',
-    estimatedCost: '$2,800',
+    estimatedCost: '£2,800',
     duration: '6 days',
     moodTags: ['adventurous', 'creative'],
     rating: 4.7,
@@ -89,7 +90,7 @@ const sampleExperiences: TripExperience[] = [
     location: 'Santorini, Greece',
     description: 'Sunset dinners, private wine tastings, and intimate villa stays overlooking the Aegean Sea.',
     imageUrl: 'https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=800&q=80',
-    estimatedCost: '$2,800',
+    estimatedCost: '£2,800',
     duration: '6 days',
     moodTags: ['romantic', 'celebrate'],
     rating: 4.7,
@@ -102,7 +103,7 @@ const sampleExperiences: TripExperience[] = [
     location: 'Paris, France',
     description: 'Seine river cruises, private museum tours, and candlelit dinners in hidden bistros.',
     imageUrl: 'https://images.unsplash.com/photo-1502602898536-47ad22581b52?w=800&q=80',
-    estimatedCost: '$3,400',
+    estimatedCost: '£3,400',
     duration: '5 days',
     moodTags: ['romantic', 'creative'],
     rating: 4.8,
@@ -117,7 +118,7 @@ const sampleExperiences: TripExperience[] = [
     location: 'Florence, Italy',
     description: 'Renaissance art workshops, sculpture classes, and private museum tours with local artists.',
     imageUrl: 'https://images.unsplash.com/photo-1552832230-c0197047d463?w=800&q=80',
-    estimatedCost: '$2,100',
+    estimatedCost: '£2,100',
     duration: '5 days',
     moodTags: ['creative', 'reflective'],
     rating: 4.6,
@@ -130,7 +131,7 @@ const sampleExperiences: TripExperience[] = [
     location: 'Marrakech, Morocco',
     description: 'Photography workshops, traditional craft sessions, and colorful market explorations.',
     imageUrl: 'https://images.unsplash.com/photo-1539650116574-75c0c6d73a0e?w=800&q=80',
-    estimatedCost: '$1,900',
+    estimatedCost: '£1,900',
     duration: '6 days',
     moodTags: ['creative', 'social'],
     rating: 4.5,
@@ -145,7 +146,7 @@ const sampleExperiences: TripExperience[] = [
     location: 'Barcelona, Spain',
     description: 'Join local festivals, beach parties, and vibrant nightlife with fellow travelers.',
     imageUrl: 'https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=800&q=80',
-    estimatedCost: '$1,800',
+    estimatedCost: '£1,800',
     duration: '4 days',
     moodTags: ['social', 'celebrate'],
     rating: 4.5,
@@ -158,7 +159,7 @@ const sampleExperiences: TripExperience[] = [
     location: 'Rio de Janeiro, Brazil',
     description: 'Experience the world\'s biggest party with samba lessons and street celebrations.',
     imageUrl: 'https://images.unsplash.com/photo-1516306580123-e6e52b1b7b5f?w=800&q=80',
-    estimatedCost: '$2,200',
+    estimatedCost: '£2,200',
     duration: '5 days',
     moodTags: ['social', 'celebrate'],
     rating: 4.8,
@@ -173,7 +174,7 @@ const sampleExperiences: TripExperience[] = [
     location: 'Dubai, UAE',
     description: 'Five-star desert camps, private helicopter tours, and exclusive shopping experiences.',
     imageUrl: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800&q=80',
-    estimatedCost: '$4,800',
+    estimatedCost: '£4,800',
     duration: '5 days',
     moodTags: ['luxury', 'celebrate'],
     rating: 4.9,
@@ -186,7 +187,7 @@ const sampleExperiences: TripExperience[] = [
     location: 'St. Moritz, Switzerland',
     description: 'World-class spa treatments with alpine views and gourmet dining experiences.',
     imageUrl: 'https://images.unsplash.com/photo-1544737151-6e4b2a8cf734?w=800&q=80',
-    estimatedCost: '$5,200',
+    estimatedCost: '£5,200',
     duration: '4 days',
     moodTags: ['luxury', 'calm'],
     rating: 4.8,
@@ -261,6 +262,22 @@ export default function TripRecommendations({ selectedMood, moodIntensity, onBac
       </div>
 
       <div className="relative z-10 container mx-auto px-6 py-12">
+        {/* Breadcrumbs */}
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="mb-8"
+        >
+          <Breadcrumbs
+            items={[
+              { label: 'Home', onClick: onBack },
+              { label: 'Mood Selection', onClick: onBack },
+              { label: `${selectedMood.name} Experiences` }
+            ]}
+          />
+        </motion.div>
+
         {/* Cinematic Header */}
         <motion.div
           initial={{ opacity: 0, y: -40 }}

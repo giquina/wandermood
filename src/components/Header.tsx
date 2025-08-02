@@ -19,22 +19,48 @@ export default function Header() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <a href="#" className="text-2xl font-bold text-gray-900">
-              WanderMood
-            </a>
+            <motion.a 
+              href="#" 
+              className="text-2xl font-bold text-gray-900 flex items-center space-x-2"
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.2 }}
+            >
+              <motion.span
+                animate={{ 
+                  rotate: [0, 10, -10, 0]
+                }}
+                transition={{ 
+                  duration: 2,
+                  repeat: Infinity,
+                  repeatDelay: 3
+                }}
+                className="text-2xl"
+              >
+                🌍
+              </motion.span>
+              <span>WanderMood</span>
+            </motion.a>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-8">
               {navItems.map((item) => (
-                <a
+                <motion.a
                   key={item.name}
                   href={item.href}
-                  className="text-gray-600 hover:text-gray-900 px-3 py-2 text-sm font-medium transition-colors duration-200"
+                  className="text-gray-600 hover:text-gray-900 px-3 py-2 text-sm font-medium transition-colors duration-200 relative group"
+                  whileHover={{ y: -2 }}
+                  transition={{ duration: 0.2 }}
                 >
                   {item.name}
-                </a>
+                  <motion.div
+                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-gray-900 origin-left"
+                    initial={{ scaleX: 0 }}
+                    whileHover={{ scaleX: 1 }}
+                    transition={{ duration: 0.2 }}
+                  />
+                </motion.a>
               ))}
             </div>
           </div>

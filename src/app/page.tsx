@@ -4,6 +4,10 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import SocialProof from '@/components/SocialProof'
+import HowItWorks from '@/components/HowItWorks'
+import DestinationsGallery from '@/components/DestinationsGallery'
+import TrustBadges from '@/components/TrustBadges'
 import MoodPicker from '@/components/MoodPicker'
 import TripRecommendations from '@/components/TripRecommendations'
 import { Mood } from '@/types'
@@ -68,7 +72,7 @@ export default function HomePage() {
                       not just your preferences
                     </p>
                     <p className="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">
-                      Intelligent travel discovery that understands how you feel and finds destinations that resonate with your soul.
+                      Smart travel discovery that understands how you feel and finds destinations that resonate with your soul.
                     </p>
                   </motion.div>
 
@@ -163,10 +167,10 @@ export default function HomePage() {
               <div className="max-w-7xl mx-auto px-6 lg:px-8">
                 <div className="text-center mb-20">
                   <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-6">
-                    Emotional Intelligence Meets Travel
+                    Emotional Understanding Meets Travel
                   </h2>
                   <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                    Experience the future of travel planning with technology that understands your emotions and finds destinations that speak to your heart.
+                    Experience the future of travel planning with smart technology that understands your emotions and finds destinations that speak to your heart.
                   </p>
                 </div>
                 
@@ -182,7 +186,7 @@ export default function HomePage() {
                       </svg>
                     </div>
                     <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                      Emotional Intelligence
+                      Emotional Understanding
                     </h3>
                     <p className="text-gray-600 leading-relaxed">
                       Our platform understands your feelings and matches them to destinations that resonate with your emotional state.
@@ -227,6 +231,18 @@ export default function HomePage() {
                 </div>
               </div>
             </section>
+
+            {/* Social Proof Section */}
+            <SocialProof />
+
+            {/* How It Works Section */}
+            <HowItWorks />
+
+            {/* Destinations Gallery */}
+            <DestinationsGallery />
+
+            {/* Trust Elements */}
+            <TrustBadges />
 
             <Footer />
           </motion.div>

@@ -1,113 +1,100 @@
-# CLAUDE.md - Operating Rules & Workflow
+# CLAUDE.md
 
-## Core Operating Rules
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-1. First think through the problem, read the codebase for relevant files, and write a plan to `tasks/todo.md`.
-2. The plan should have a list of todo items that you can check off as you complete them.
-3. Before you begin working, check in with me and I will verify the plan.
-4. Then, begin working on the todo items, marking them as complete as you go.
-5. Every step of the way, give me a high-level summary of the changes you made.
-6. Make every code/task change as simple as humanly possible. Avoid broad refactors.
-7. Finally, add a review section to the `todo.md` file summarizing what you did.
-8. DO NOT BE LAZY. NO HALF FIXES. Find the root cause and fix it properly.
-9. Minimise the code impact of every change. Simplicity always wins.
+## Project Overview
 
-## WanderMood Project Context
+WanderMood is an AI-powered mood-based travel discovery platform built with Next.js 14 and TypeScript. Users select their emotional state (mood) and receive curated travel recommendations that match their feelings rather than traditional location-based search.
 
-This is **WanderMood** - an AI-powered mood-based travel discovery platform that helps users discover and book travel experiences based on their emotional state, not just location or price.
+## Development Commands
 
-### Core Features:
-- Mood-based travel recommendations
-- AI-powered experience matching
-- Visual, Pinterest-like discovery feed  
-- User authentication and saved preferences
-- Admin panel for experience management
-- Mobile-first responsive design
-
-### Tech Stack:
-- **Frontend**: Next.js 14 + TypeScript + App Router
-- **Styling**: Tailwind CSS + Framer Motion
-- **Database**: MongoDB + Mongoose
-- **Auth**: NextAuth.js
-- **Deployment**: Vercel
-- **AI**: OpenAI/Claude for mood interpretation
-
-### Design Principles:
-- Clean, minimalist aesthetic (inspired by Calm, Airbnb, Notion)
-- Soft color palette with pastel/neutral tones
-- Smooth animations and emotional interactions
-- Mobile-first, accessible design
-
-## File Structure
-
-```
-/workspaces/wandermood/
-├── src/                    # Main source code
-├── tests/                  # Test files
-├── docs/                   # Documentation
-├── claude/                 # Claude-specific files
-│   ├── subagents/         # Claude subagents
-│   └── context.json       # Project context memory
-├── tasks/                  # Task management
-│   └── todo.md            # Current todo tracker
-├── errors/                 # Error tracking
-│   └── debug.log          # Debug log file
-├── scripts/               # Automation scripts
-│   └── bootstrap.sh       # Bootstrap script
-├── CLAUDE.md              # This file
-└── README.md              # Project documentation
+### Essential Commands
+```bash
+# Development
+npm run dev          # Start development server (localhost:3000)
+npm run build        # Production build with optimization
+npm run start        # Start production server
+npm run lint         # ESLint code quality checks
+npm run typecheck    # TypeScript compilation check without emit
 ```
 
-## Slash Commands
+### Automation Scripts
+```bash
+# Claude workflow automation
+./scripts/update-docs.sh      # Auto-update documentation
+./scripts/project-health.sh   # Project status overview
+./scripts/auto-commit-hook.sh # Smart git commits with validation
+```
 
-### `/update-docs`
-Auto-updates all documentation files by scanning latest codebase changes:
-- Updates all README.md files
-- Updates CLAUDE.md with current file structure and tech stack
-- Updates anything inside /docs/
-- Synchronizes subagent registry information
-- Keeps documentation synced with code changes
-- **Usage**: Type `/update-docs` to trigger automated documentation refresh
-- **Script**: `scripts/update-docs.sh`
+## Architecture & Code Structure
 
-### `/project-health`
-Outputs project status:
-- Count of remaining tasks in todo.md
-- Number of commits made
-- Files changed today
-- Unresolved bugs in errors/debug.log
-- Claude summary of current repo state
-- **Usage**: Type `/project-health` for complete project status overview
-- **Script**: `scripts/project-health.sh` (to be implemented)
+### Core Application Flow
+The app follows a mood-to-recommendation pipeline:
+1. **HomePage** (`src/app/page.tsx`) manages the main application state and view transitions
+2. **MoodPicker** component handles mood selection with intensity slider
+3. **TripRecommendations** displays filtered travel experiences based on selected mood
+4. **AnimatePresence** provides smooth transitions between mood selection and recommendations
 
-## Hooks
+### Key Type System
+Central types in `src/types/index.ts`:
+- **Mood**: Core mood object with visual properties (emoji, color gradients) and metadata
+- **TravelExperience**: Travel recommendation with mood matching arrays and cost estimation
+- **UserPreferences**: Complete user state including mood, budget, flexibility preferences
 
-### GitHub Auto-Commit Hook
-Automatically commits code to GitHub **only when**:
-- Code executes without syntax or build errors
-- No validation issues are detected
-- Smart commit messages included
-- **Does not trigger dev servers or processes**
+### Component Architecture
+Components use Framer Motion for animations and follow a mood-driven design system:
+- Mood cards use dynamic color gradients defined in the Mood interface
+- State management is lifted to HomePage for cross-component communication
+- Each mood has associated visual theming (colors, gradients) for consistent UX
 
-## Context Memory
+### Styling System
+- **Tailwind CSS** with custom configuration extending default color palette
+- **CSS Custom Properties** for dynamic theming (HSL color variables)
+- **Framer Motion** for page transitions and micro-interactions
+- **Mobile-first responsive design** with breakpoint-based layouts
 
-The `claude/context.json` file stores:
-- File structure
-- Key functions/modules  
-- Programming language used
-- Project state and progress
+## Mood-Based Recommendation Logic
 
-This helps Claude retain repo-wide context during longer sessions.
+The recommendation engine matches travel experiences to user moods through:
+- **Mood matching arrays** in TravelExperience objects
+- **Color-coded visual feedback** using mood.color and mood.gradient properties  
+- **Intensity-based filtering** (planned feature using moodIntensity state)
 
-## Subagents
+## Database Schema (Planned)
+- **Users**: Profile, mood history, saved trips
+- **TravelExperiences**: Destinations with mood tags, activities, costs
+- **Recommendations**: AI-generated suggestions based on mood + user history
 
-Specialized Claude agents for specific tasks:
-- **doc-writer**: Documentation generation and updates
-- **bug-finder**: Error detection and debugging
-- **refactor-helper**: Code optimization and restructuring
-- **wandermood-architect**: WanderMood-specific feature development
-- **test-manager**: Test creation and validation
+## Development Patterns
 
----
+### State Management
+- React useState for local component state
+- Lifted state pattern for cross-component communication
+- No external state management library (Redux/Zustand) currently used
 
-*Last updated: 2025-08-01*
+### Animation Patterns
+- Use AnimatePresence for page-level transitions
+- Consistent motion values for brand consistency
+- Mood-specific animations based on emotional state
+
+### Type Safety
+- Strict TypeScript configuration with --noEmit checks
+- Interface-driven development with central type definitions
+- Props typing for all components with exported interfaces
+
+## Testing Strategy (To Be Implemented)
+- **Jest + React Testing Library**: Component unit tests
+- **Playwright**: End-to-end mood selection flows
+- **Storybook**: Component visual testing and documentation
+
+## AI Integration Points
+- Mood interpretation and enhancement
+- Personalized recommendation algorithms  
+- Natural language processing for trip descriptions
+
+## Subagents Available
+- **wandermood-architect**: Feature development and mood algorithm work
+- **doc-writer**: Documentation maintenance and API docs
+- **bug-finder**: Code quality and error detection
+- **test-manager**: Test creation and coverage analysis  
+- **deploy-helper**: Production deployment and environment management

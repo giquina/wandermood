@@ -2,51 +2,153 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+/* 2025 Modern Typography */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Geist+Sans:wght@100..900&display=swap');
 
 :root {
-  --background: 220 15% 97%;
-  --foreground: 220 10% 15%;
-  --card: 220 20% 100%;
-  --card-foreground: 220 10% 15%;
-  --popover: 220 20% 100%;
-  --popover-foreground: 220 10% 15%;
-  --primary: 200 100% 50%;
-  --primary-foreground: 220 20% 100%;
-  --secondary: 220 15% 95%;
-  --secondary-foreground: 220 10% 30%;
-  --muted: 220 15% 95%;
-  --muted-foreground: 220 10% 50%;
-  --accent: 200 100% 50%;
-  --accent-foreground: 220 20% 100%;
-  --destructive: 0 65% 50%;
-  --destructive-foreground: 220 20% 100%;
-  --border: 220 15% 85%;
-  --input: 220 15% 85%;
-  --ring: 200 100% 50%;
+  /* 2025 Modern Design System */
+  --background: 0 0% 100%;
+  --foreground: 240 10% 3.9%;
+  --card: 0 0% 100%;
+  --card-foreground: 240 10% 3.9%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 240 10% 3.9%;
+  --primary: 240 5.9% 10%;
+  --primary-foreground: 0 0% 98%;
+  --secondary: 240 4.8% 95.9%;
+  --secondary-foreground: 240 5.9% 10%;
+  --muted: 240 4.8% 95.9%;
+  --muted-foreground: 240 3.8% 46.1%;
+  --accent: 240 4.8% 95.9%;
+  --accent-foreground: 240 5.9% 10%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 240 5.9% 90%;
+  --input: 240 5.9% 90%;
+  --ring: 240 5.9% 10%;
   --radius: 12px;
+  
+  /* Cinematic Spacing System - Generous Apple-style */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 48px;
+  --spacing-3xl: 64px;
+  
+  /* Mood-Responsive Color Palettes */
+  /* Calm - Misty, serene tones */
+  --mood-calm-primary: 210 40% 88%;
+  --mood-calm-secondary: 210 25% 94%;
+  --mood-calm-accent: 210 55% 75%;
+  --mood-calm-bg: 210 20% 98%;
+  
+  /* Adventure - Sharp contrast, energetic */
+  --mood-adventure-primary: 15 85% 65%;
+  --mood-adventure-secondary: 30 75% 85%;
+  --mood-adventure-accent: 15 90% 55%;
+  --mood-adventure-bg: 30 15% 98%;
+  
+  /* Romantic - Warm glows, intimate */
+  --mood-romantic-primary: 340 75% 85%;
+  --mood-romantic-secondary: 340 50% 92%;
+  --mood-romantic-accent: 340 85% 75%;
+  --mood-romantic-bg: 340 25% 98%;
+  
+  /* Creative - Inspiring purples */
+  --mood-creative-primary: 260 60% 80%;
+  --mood-creative-secondary: 260 40% 90%;
+  --mood-creative-accent: 260 75% 70%;
+  --mood-creative-bg: 260 20% 98%;
+  
+  /* Social - Vibrant but gentle */
+  --mood-social-primary: 45 85% 75%;
+  --mood-social-secondary: 45 60% 88%;
+  --mood-social-accent: 45 90% 65%;
+  --mood-social-bg: 45 25% 98%;
+  
+  /* Celebratory - Joyful gradients */
+  --mood-celebrate-primary: 320 70% 80%;
+  --mood-celebrate-secondary: 320 50% 90%;
+  --mood-celebrate-accent: 320 80% 70%;
+  --mood-celebrate-bg: 320 20% 98%;
+  
+  /* Reflective - Thoughtful greens */
+  --mood-reflective-primary: 140 40% 75%;
+  --mood-reflective-secondary: 140 25% 88%;
+  --mood-reflective-accent: 140 55% 65%;
+  --mood-reflective-bg: 140 15% 98%;
+  
+  /* Luxurious - Elegant golds */
+  --mood-luxury-primary: 40 60% 80%;
+  --mood-luxury-secondary: 40 40% 90%;
+  --mood-luxury-accent: 40 75% 70%;
+  --mood-luxury-bg: 40 20% 98%;
 }
 
 .dark {
-  --background: 220 15% 7%;
-  --foreground: 220 15% 95%;
-  --card: 220 15% 10%;
-  --card-foreground: 220 15% 95%;
-  --popover: 220 15% 10%;
-  --popover-foreground: 220 15% 95%;
-  --primary: 200 100% 60%;
-  --primary-foreground: 220 15% 7%;
-  --secondary: 220 15% 15%;
-  --secondary-foreground: 220 15% 70%;
-  --muted: 220 15% 15%;
-  --muted-foreground: 220 15% 60%;
-  --accent: 200 100% 60%;
-  --accent-foreground: 220 15% 7%;
-  --destructive: 0 65% 60%;
-  --destructive-foreground: 220 15% 95%;
-  --border: 220 15% 20%;
-  --input: 220 15% 20%;
-  --ring: 200 100% 60%;
+  /* Dark Mode Cinematic */
+  --background: 220 12% 6%;
+  --foreground: 220 8% 95%;
+  --card: 220 10% 8%;
+  --card-foreground: 220 8% 95%;
+  --popover: 220 10% 8%;
+  --popover-foreground: 220 8% 95%;
+  --primary: 0 0% 98%;
+  --primary-foreground: 220 12% 6%;
+  --secondary: 220 10% 12%;
+  --secondary-foreground: 220 8% 80%;
+  --muted: 220 10% 12%;
+  --muted-foreground: 220 6% 65%;
+  --accent: 0 0% 98%;
+  --accent-foreground: 220 12% 6%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 220 10% 15%;
+  --input: 220 10% 15%;
+  --ring: 0 0% 98%;
+  
+  /* Dark Mode Mood Palettes - Maintain emotional connection */
+  --mood-calm-primary: 210 30% 25%;
+  --mood-calm-secondary: 210 20% 15%;
+  --mood-calm-accent: 210 40% 35%;
+  --mood-calm-bg: 210 15% 8%;
+  
+  --mood-adventure-primary: 15 60% 35%;
+  --mood-adventure-secondary: 30 40% 20%;
+  --mood-adventure-accent: 15 70% 45%;
+  --mood-adventure-bg: 30 20% 8%;
+  
+  --mood-romantic-primary: 340 50% 35%;
+  --mood-romantic-secondary: 340 30% 20%;
+  --mood-romantic-accent: 340 60% 45%;
+  --mood-romantic-bg: 340 20% 8%;
+  
+  --mood-creative-primary: 260 40% 35%;
+  --mood-creative-secondary: 260 25% 20%;
+  --mood-creative-accent: 260 50% 45%;
+  --mood-creative-bg: 260 15% 8%;
+  
+  --mood-social-primary: 45 60% 35%;
+  --mood-social-secondary: 45 40% 20%;
+  --mood-social-accent: 45 70% 45%;
+  --mood-social-bg: 45 20% 8%;
+  
+  --mood-celebrate-primary: 320 50% 35%;
+  --mood-celebrate-secondary: 320 30% 20%;
+  --mood-celebrate-accent: 320 60% 45%;
+  --mood-celebrate-bg: 320 15% 8%;
+  
+  --mood-reflective-primary: 140 30% 25%;
+  --mood-reflective-secondary: 140 20% 15%;
+  --mood-reflective-accent: 140 40% 35%;
+  --mood-reflective-bg: 140 15% 8%;
+  
+  --mood-luxury-primary: 40 40% 35%;
+  --mood-luxury-secondary: 40 25% 20%;
+  --mood-luxury-accent: 40 50% 45%;
+  --mood-luxury-bg: 40 15% 8%;
 }
 
 * {
@@ -56,26 +158,254 @@
 body {
   color: hsl(var(--foreground));
   background: hsl(var(--background));
-  font-feature-settings: "rlig" 1, "calt" 1;
-  font-family: 'Inter', system-ui, sans-serif;
+  font-feature-settings: "rlig" 1, "calt" 1, "cv11" 1;
+  font-family: 'Inter', 'Geist Sans', system-ui, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-optical-sizing: auto;
 }
 
 html {
   scroll-behavior: smooth;
 }
 
+/* Enhanced Cinematic Background Gradients */
 .gradient-bg {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, 
+    hsl(220, 30%, 98%) 0%, 
+    hsl(210, 25%, 96%) 25%,
+    hsl(240, 20%, 97%) 50%, 
+    hsl(200, 25%, 95%) 75%,
+    hsl(180, 20%, 96%) 100%);
+  position: relative;
 }
 
-.mood-card {
-  backdrop-filter: blur(10px);
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+.gradient-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(ellipse 800px 600px at 50% 30%, 
+    hsla(210, 40%, 88%, 0.1) 0%,
+    transparent 50%),
+    radial-gradient(ellipse 600px 400px at 80% 70%, 
+    hsla(340, 60%, 85%, 0.08) 0%,
+    transparent 50%),
+    radial-gradient(ellipse 500px 300px at 20% 80%, 
+    hsla(260, 50%, 80%, 0.06) 0%,
+    transparent 50%);
+  pointer-events: none;
 }
 
-.mood-card:hover {
-  background: rgba(255, 255, 255, 0.2);
+.gradient-bg-dark {
+  background: linear-gradient(135deg, 
+    hsl(220, 15%, 8%) 0%, 
+    hsl(210, 12%, 6%) 50%, 
+    hsl(200, 15%, 4%) 100%);
+}
+
+/* Instagram Reels-inspired Cinematic Cards */
+.cinematic-card {
+  backdrop-filter: blur(20px) saturate(150%);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.04),
+    0 4px 16px rgba(0, 0, 0, 0.02),
+    0 1px 4px rgba(0, 0, 0, 0.01);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cinematic-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.08),
+    0 8px 24px rgba(0, 0, 0, 0.04),
+    0 2px 8px rgba(0, 0, 0, 0.02);
+}
+
+/* Mood-Responsive Cinematic Cards */
+.mood-card-calm {
+  background: linear-gradient(135deg, 
+    hsla(var(--mood-calm-primary), 0.15) 0%, 
+    hsla(var(--mood-calm-secondary), 0.1) 100%);
+  border: 1px solid hsla(var(--mood-calm-accent), 0.2);
+}
+
+.mood-card-adventure {
+  background: linear-gradient(135deg, 
+    hsla(var(--mood-adventure-primary), 0.15) 0%, 
+    hsla(var(--mood-adventure-secondary), 0.1) 100%);
+  border: 1px solid hsla(var(--mood-adventure-accent), 0.2);
+}
+
+.mood-card-romantic {
+  background: linear-gradient(135deg, 
+    hsla(var(--mood-romantic-primary), 0.15) 0%, 
+    hsla(var(--mood-romantic-secondary), 0.1) 100%);
+  border: 1px solid hsla(var(--mood-romantic-accent), 0.2);
+}
+
+.mood-card-creative {
+  background: linear-gradient(135deg, 
+    hsla(var(--mood-creative-primary), 0.15) 0%, 
+    hsla(var(--mood-creative-secondary), 0.1) 100%);
+  border: 1px solid hsla(var(--mood-creative-accent), 0.2);
+}
+
+.mood-card-social {
+  background: linear-gradient(135deg, 
+    hsla(var(--mood-social-primary), 0.15) 0%, 
+    hsla(var(--mood-social-secondary), 0.1) 100%);
+  border: 1px solid hsla(var(--mood-social-accent), 0.2);
+}
+
+.mood-card-celebrate {
+  background: linear-gradient(135deg, 
+    hsla(var(--mood-celebrate-primary), 0.15) 0%, 
+    hsla(var(--mood-celebrate-secondary), 0.1) 100%);
+  border: 1px solid hsla(var(--mood-celebrate-accent), 0.2);
+}
+
+.mood-card-reflective {
+  background: linear-gradient(135deg, 
+    hsla(var(--mood-reflective-primary), 0.15) 0%, 
+    hsla(var(--mood-reflective-secondary), 0.1) 100%);
+  border: 1px solid hsla(var(--mood-reflective-accent), 0.2);
+}
+
+.mood-card-luxury {
+  background: linear-gradient(135deg, 
+    hsla(var(--mood-luxury-primary), 0.15) 0%, 
+    hsla(var(--mood-luxury-secondary), 0.1) 100%);
+  border: 1px solid hsla(var(--mood-luxury-accent), 0.2);
+}
+
+/* Cinematic Typography Styles */
+.cinematic-heading {
+  font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.cinematic-subheading {
+  font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+
+.cinematic-body {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.6;
+}
+
+/* Cinematic Button Styles */
+.cinematic-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius);
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: -0.01em;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.08),
+    0 2px 8px rgba(0, 0, 0, 0.04);
+  position: relative;
+  overflow: hidden;
+}
+
+.cinematic-button:hover {
   transform: translateY(-2px);
-  transition: all 0.3s ease;
+  box-shadow: 
+    0 8px 24px rgba(0, 0, 0, 0.12),
+    0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.cinematic-button:active {
+  transform: translateY(0);
+  transition-duration: 0.1s;
+}
+
+/* Cinematic Image Styles */
+.cinematic-image {
+  border-radius: var(--radius);
+  overflow: hidden;
+  position: relative;
+}
+
+.cinematic-image::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.1) 0%,
+    rgba(0, 0, 0, 0.05) 50%,
+    rgba(0, 0, 0, 0.15) 100%
+  );
+  pointer-events: none;
+}
+
+/* Subtle Micro-interactions */
+@keyframes gentle-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.85; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-4px); }
+}
+
+.gentle-animation {
+  animation: gentle-pulse 4s ease-in-out infinite;
+}
+
+.float-animation {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Responsive spacing for mobile-first */
+@media (max-width: 640px) {
+  :root {
+    --spacing-xs: 2px;
+    --spacing-sm: 6px;
+    --spacing-md: 12px;
+    --spacing-lg: 20px;
+    --spacing-xl: 28px;
+    --spacing-2xl: 40px;
+    --spacing-3xl: 56px;
+  }
+}
+
+/* Accessibility: Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .cinematic-card,
+  .cinematic-button,
+  .gentle-animation,
+  .float-animation {
+    animation: none;
+    transition: none;
+  }
+  
+  .cinematic-card:hover,
+  .cinematic-button:hover {
+    transform: none;
+  }
 }

@@ -25,143 +25,211 @@ export default function HomePage() {
   }
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-white">
       <AnimatePresence mode="wait">
         {!showRecommendations ? (
           <motion.div
             key="mood-selection"
             initial={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.5 }}
-            className="gradient-bg min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100"
+            transition={{ duration: 0.3 }}
+            className="min-h-screen"
           >
-            {/* Header */}
-            <header className="relative z-10 pt-8 pb-4">
-              <div className="container mx-auto px-4">
+            {/* 2025 Modern Hero Section */}
+            <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+              {/* Subtle background gradient */}
+              <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-white" />
+              
+              {/* Modern grid pattern */}
+              <div className="absolute inset-0 opacity-[0.02]">
+                <div className="absolute inset-0" style={{
+                  backgroundImage: `radial-gradient(circle at 1px 1px, rgb(0,0,0) 1px, transparent 0)`,
+                  backgroundSize: '24px 24px'
+                }} />
+              </div>
+
+              <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-8">
+                <div className="text-center">
+                  {/* Modern hero text */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 24 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, ease: [0.21, 1, 0.81, 1] }}
+                    className="mb-8"
+                  >
+                    <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight text-gray-900 mb-6">
+                      WanderMood
+                    </h1>
+                    <p className="text-xl sm:text-2xl lg:text-3xl text-gray-600 font-medium mb-4 max-w-4xl mx-auto leading-tight">
+                      Travel that matches your emotions,<br />
+                      not just your preferences
+                    </p>
+                    <p className="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">
+                      AI-powered travel discovery that understands how you feel and finds destinations that resonate with your soul.
+                    </p>
+                  </motion.div>
+
+                  {/* Modern CTA */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 24 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.2, ease: [0.21, 1, 0.81, 1] }}
+                    className="mb-16"
+                  >
+                    <button 
+                      onClick={() => document.querySelector('#mood-selection')?.scrollIntoView({ behavior: 'smooth' })}
+                      className="inline-flex items-center px-8 py-4 bg-black text-white text-lg font-medium rounded-full hover:bg-gray-800 transition-all duration-200 hover:scale-105 shadow-lg hover:shadow-xl"
+                    >
+                      Discover Your Journey
+                      <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                      </svg>
+                    </button>
+                  </motion.div>
+
+                  {/* Modern feature badges */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 24 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.4, ease: [0.21, 1, 0.81, 1] }}
+                    className="flex flex-wrap justify-center gap-4 text-sm text-gray-500"
+                  >
+                    <div className="flex items-center px-4 py-2 bg-gray-50 rounded-full">
+                      <div className="w-2 h-2 bg-green-500 rounded-full mr-2" />
+                      AI-Powered
+                    </div>
+                    <div className="flex items-center px-4 py-2 bg-gray-50 rounded-full">
+                      <div className="w-2 h-2 bg-blue-500 rounded-full mr-2" />
+                      Global Destinations
+                    </div>
+                    <div className="flex items-center px-4 py-2 bg-gray-50 rounded-full">
+                      <div className="w-2 h-2 bg-purple-500 rounded-full mr-2" />
+                      Emotion-Aware
+                    </div>
+                  </motion.div>
+                </div>
+              </div>
+            </section>
+
+            {/* Modern Mood Selection Section */}
+            <section id="mood-selection" className="py-24 bg-gray-50">
+              <div className="max-w-7xl mx-auto px-6 lg:px-8">
                 <motion.div
-                  initial={{ opacity: 0, y: -20 }}
+                  initial={{ opacity: 0, y: 24 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="text-center"
+                  transition={{ duration: 0.6, delay: 0.6 }}
+                  className="text-center mb-16"
                 >
-                  <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent mb-4">
-                    WanderMood
-                  </h1>
-                  <p className="text-xl md:text-2xl text-gray-700 mb-2">
-                    AI Travel Concierge
-                  </p>
-                  <p className="text-gray-600 max-w-2xl mx-auto">
-                    Stop planning trips. Start planning feelings. Discover travel experiences that match your emotional state.
+                  <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
+                    How are you feeling?
+                  </h2>
+                  <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Select your current emotional state and we'll curate travel experiences that perfectly match your mood.
                   </p>
                 </motion.div>
+                
+                <MoodPicker 
+                  onMoodSelect={handleMoodSelect} 
+                  onFindTrips={handleFindTrips}
+                  selectedMood={selectedMood} 
+                />
               </div>
-            </header>
+            </section>
 
-            {/* Hero Section */}
-            <main className="relative z-10 py-12">
-              <div className="container mx-auto px-4">
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.2 }}
-                  className="max-w-6xl mx-auto"
-                >
-                  {/* Mood Picker Section */}
-                  <section className="mb-16">
-                    <MoodPicker 
-                      onMoodSelect={handleMoodSelect} 
-                      onFindTrips={handleFindTrips}
-                      selectedMood={selectedMood} 
-                    />
-                  </section>
-
-                  {/* Features Preview */}
-                  <motion.section
-                    initial={{ opacity: 0, y: 40 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.4 }}
-                    className="grid md:grid-cols-3 gap-8 mb-16 fade-in"
+            {/* Modern Features Section */}
+            <section className="py-24">
+              <div className="max-w-7xl mx-auto px-6 lg:px-8">
+                <div className="text-center mb-20">
+                  <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-6">
+                    Emotional Intelligence Meets Travel
+                  </h2>
+                  <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Experience the future of travel planning with AI that understands your emotions and finds destinations that speak to your heart.
+                  </p>
+                </div>
+                
+                <div className="grid lg:grid-cols-3 gap-8">
+                  <motion.div 
+                    className="p-8 bg-white rounded-2xl border border-gray-200 hover:border-gray-300 transition-all duration-200 hover:shadow-lg group"
+                    whileHover={{ y: -4 }}
+                    transition={{ duration: 0.2 }}
                   >
-                    <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200 text-center">
-                      <div className="text-4xl mb-4">🧠</div>
-                      <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                        Emotional Intelligence
-                      </h3>
-                      <p className="text-gray-600">
-                        Our AI understands your feelings and matches them to perfect destinations
-                      </p>
+                    <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-200">
+                      <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                      </svg>
                     </div>
+                    <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                      Emotional Intelligence
+                    </h3>
+                    <p className="text-gray-600 leading-relaxed">
+                      Our AI understands your feelings and matches them to destinations that resonate with your emotional state.
+                    </p>
+                  </motion.div>
 
-                    <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200 text-center">
-                      <div className="text-4xl mb-4">✨</div>
-                      <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                        Personalized Experiences
-                      </h3>
-                      <p className="text-gray-600">
-                        Every recommendation is tailored to your unique emotional needs and preferences
-                      </p>
-                    </div>
-
-                    <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200 text-center">
-                      <div className="text-4xl mb-4">🌍</div>
-                      <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                        Global Destinations
-                      </h3>
-                      <p className="text-gray-600">
-                        From hidden gems to popular spots, find experiences that resonate with your soul
-                      </p>
-                    </div>
-                  </motion.section>
-
-                  {/* Coming Soon Features */}
-                  <motion.section
-                    initial={{ opacity: 0, y: 40 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.6 }}
-                    className="text-center bg-white rounded-xl p-8 shadow-lg border border-gray-200 fade-in"
+                  <motion.div 
+                    className="p-8 bg-white rounded-2xl border border-gray-200 hover:border-gray-300 transition-all duration-200 hover:shadow-lg group"
+                    whileHover={{ y: -4 }}
+                    transition={{ duration: 0.2 }}
                   >
-                    <h2 className="text-2xl font-bold text-gray-800 mb-4">
-                      Coming Soon
-                    </h2>
-                    <div className="grid md:grid-cols-2 gap-6 text-left">
-                      <div>
-                        <h4 className="font-semibold text-gray-800 mb-2">🤖 AI Chat Concierge</h4>
-                        <p className="text-gray-600 text-sm">
-                          Have natural conversations about your travel dreams
-                        </p>
-                      </div>
-                      <div>
-                        <h4 className="font-semibold text-gray-800 mb-2">📱 Mobile App</h4>
-                        <p className="text-gray-600 text-sm">
-                          Take your mood-based travel planning on the go
-                        </p>
-                      </div>
-                      <div>
-                        <h4 className="font-semibold text-gray-800 mb-2">🎯 Smart Itineraries</h4>
-                        <p className="text-gray-600 text-sm">
-                          Complete trip plans with flights, hotels, and activities
-                        </p>
-                      </div>
-                      <div>
-                        <h4 className="font-semibold text-gray-800 mb-2">👥 Group Planning</h4>
-                        <p className="text-gray-600 text-sm">
-                          Plan trips that satisfy everyone's mood and preferences
-                        </p>
-                      </div>
+                    <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-200">
+                      <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+                      </svg>
                     </div>
-                  </motion.section>
-                </motion.div>
+                    <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                      Personalized Experiences
+                    </h3>
+                    <p className="text-gray-600 leading-relaxed">
+                      Every recommendation is tailored to your unique emotional needs and travel preferences.
+                    </p>
+                  </motion.div>
+
+                  <motion.div 
+                    className="p-8 bg-white rounded-2xl border border-gray-200 hover:border-gray-300 transition-all duration-200 hover:shadow-lg group"
+                    whileHover={{ y: -4 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-200">
+                      <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                    </div>
+                    <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                      Global Destinations
+                    </h3>
+                    <p className="text-gray-600 leading-relaxed">
+                      From hidden gems to popular spots, discover experiences worldwide that match your emotional state.
+                    </p>
+                  </motion.div>
+                </div>
               </div>
-            </main>
+            </section>
 
-            {/* Footer */}
-            <footer className="relative z-10 py-8 mt-16">
-              <div className="container mx-auto px-4 text-center">
-                <p className="text-gray-600">
-                  Built with ❤️ using Claude Code and Next.js
-                </p>
-                <p className="text-sm text-gray-500 mt-2">
-                  © 2025 WanderMood. Your emotional travel companion.
-                </p>
+            {/* Modern Footer */}
+            <footer className="py-16 bg-gray-50">
+              <div className="max-w-7xl mx-auto px-6 lg:px-8">
+                <div className="text-center">
+                  <h3 className="text-2xl font-semibold text-gray-900 mb-4">
+                    Ready to begin your emotional journey?
+                  </h3>
+                  <p className="text-gray-600 mb-8 max-w-md mx-auto">
+                    Start discovering travel experiences that match your soul.
+                  </p>
+                  
+                  <button
+                    className="inline-flex items-center px-6 py-3 bg-black text-white font-medium rounded-full hover:bg-gray-800 transition-colors duration-200"
+                    onClick={() => document.querySelector('#mood-selection')?.scrollIntoView({ behavior: 'smooth' })}
+                  >
+                    Get Started
+                  </button>
+                  
+                  <div className="mt-12 pt-8 border-t border-gray-200 text-center">
+                    <p className="text-gray-500 text-sm">
+                      © 2025 WanderMood. Built with modern design principles.
+                    </p>
+                  </div>
+                </div>
               </div>
             </footer>
           </motion.div>
@@ -170,7 +238,7 @@ export default function HomePage() {
             key="recommendations"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.3 }}
           >
             <TripRecommendations 
               selectedMood={selectedMood!}

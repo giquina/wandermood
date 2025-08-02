@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -6,8 +6,6 @@ export const metadata: Metadata = {
   description: 'Discover travel experiences based on your mood with AI-powered recommendations',
   keywords: 'travel, AI, mood-based travel, vacation planning, trip recommendations',
   authors: [{ name: 'WanderMood Team' }],
-  viewport: 'width=device-width, initial-scale=1',
-  themeColor: '#667eea',
   openGraph: {
     title: 'WanderMood - AI Travel Concierge', 
     description: 'Discover travel experiences based on your mood with AI-powered recommendations',
@@ -19,6 +17,12 @@ export const metadata: Metadata = {
     title: 'WanderMood - AI Travel Concierge',
     description: 'Discover travel experiences based on your mood with AI-powered recommendations',
   }
+}
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: '#667eea',
 }
 
 export default function RootLayout({

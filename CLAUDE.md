@@ -2,15 +2,15 @@
 
 ## Core Operating Rules
 
-1. **Think First**: First think through the problem, read the codebase for relevant files, and write a plan to `tasks/todo.md`.
-2. **Plan Everything**: The plan should have a list of todo items that you can check off as you complete them.
-3. **Check-in Required**: Before you begin working, check in with me and I will verify the plan.
-4. **Execute Systematically**: Then, begin working on the todo items, marking them as complete as you go.
-5. **Continuous Updates**: Every step of the way, give me a high-level summary of the changes you made.
-6. **Simplicity First**: Make every code/task change as simple as humanly possible. Avoid broad refactors.
-7. **Document Progress**: Finally, add a review section to the `todo.md` file summarizing what you did.
-8. **NO HALF FIXES**: DO NOT BE LAZY. NO HALF FIXES. Find the root cause and fix it properly.
-9. **Minimize Impact**: Minimise the code impact of every change. Simplicity always wins.
+1. First think through the problem, read the codebase for relevant files, and write a plan to `tasks/todo.md`.
+2. The plan should have a list of todo items that you can check off as you complete them.
+3. Before you begin working, check in with me and I will verify the plan.
+4. Then, begin working on the todo items, marking them as complete as you go.
+5. Every step of the way, give me a high-level summary of the changes you made.
+6. Make every code/task change as simple as humanly possible. Avoid broad refactors.
+7. Finally, add a review section to the `todo.md` file summarizing what you did.
+8. DO NOT BE LAZY. NO HALF FIXES. Find the root cause and fix it properly.
+9. Minimise the code impact of every change. Simplicity always wins.
 
 ## WanderMood Project Context
 
@@ -63,9 +63,12 @@ This is **WanderMood** - an AI-powered mood-based travel discovery platform that
 ### `/update-docs`
 Auto-updates all documentation files by scanning latest codebase changes:
 - Updates all README.md files
-- Updates CLAUDE.md
+- Updates CLAUDE.md with current file structure and tech stack
 - Updates anything inside /docs/
+- Synchronizes subagent registry information
 - Keeps documentation synced with code changes
+- **Usage**: Type `/update-docs` to trigger automated documentation refresh
+- **Script**: `scripts/update-docs.sh`
 
 ### `/project-health`
 Outputs project status:
@@ -74,6 +77,8 @@ Outputs project status:
 - Files changed today
 - Unresolved bugs in errors/debug.log
 - Claude summary of current repo state
+- **Usage**: Type `/project-health` for complete project status overview
+- **Script**: `scripts/project-health.sh` (to be implemented)
 
 ## Hooks
 
